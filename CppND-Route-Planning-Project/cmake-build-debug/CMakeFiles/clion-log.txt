@@ -1,4 +1,18 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/harrisrobin/code/oss/udacity/cplusplus/CppND-Route-Planning-Project
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/harrisrobin/code/oss/udacity/cplusplus/UdacityCPlusPlus/CppND-Route-Planning-Project
+-- The C compiler identification is AppleClang 11.0.3.11030032
+-- The CXX compiler identification is AppleClang 11.0.3.11030032
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
 CMake Error at CMakeLists.txt:15 (find_package):
   By not providing "Findio2d.cmake" in CMAKE_MODULE_PATH this project has
   asked CMake to find a package configuration file provided by "io2d", but
@@ -17,4 +31,4 @@ CMake Error at CMakeLists.txt:15 (find_package):
 
 
 -- Configuring incomplete, errors occurred!
-See also "/Users/harrisrobin/code/oss/udacity/cplusplus/CppND-Route-Planning-Project/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "/Users/harrisrobin/code/oss/udacity/cplusplus/UdacityCPlusPlus/CppND-Route-Planning-Project/cmake-build-debug/CMakeFiles/CMakeOutput.log".
