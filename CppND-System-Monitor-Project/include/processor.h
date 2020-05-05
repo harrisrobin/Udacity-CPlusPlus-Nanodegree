@@ -4,14 +4,14 @@
 
 class Processor {
 public:
-    float Utilization();  // TODO: See src/processor.cpp
+    float Utilization();  // DONE: See src/processor.cpp
 
 
 
     long preIdle;
     long preTotal;
 
-    // TODO: Declare any necessary private members
+    // DONE: Declare any necessary private members
 private:
 };
 

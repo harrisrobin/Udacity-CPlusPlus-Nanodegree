@@ -231,7 +231,7 @@ long LinuxParser::IdleJiffies() {
     return 0;
 }
 
-// TODO: Read and return CPU utilization
+// DONE: Read and return CPU utilization
 vector<string> LinuxParser::CpuUtilization() {
 
     vector<string> cpuVect;
