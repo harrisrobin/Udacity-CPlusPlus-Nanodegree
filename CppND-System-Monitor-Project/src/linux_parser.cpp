@@ -40,11 +40,12 @@ string LinuxParser::OperatingSystem() {
 string LinuxParser::Kernel() {
     string os, kernel;
     string line;
+    string version;
     std::ifstream stream(kProcDirectory + kVersionFilename);
     if (stream.is_open()) {
         std::getline(stream, line);
         std::istringstream linestream(line);
-        linestream >> os >> kernel;
+        linestream >> os >> version >> kernel;
     }
     return kernel;
 }
@@ -74,7 +75,7 @@ vector<int> LinuxParser::Pids() {
 float LinuxParser::MemoryUtilization() {
     string line;
     string key;
-    long value = 0, memTotal = 0, memFree = 0, memAvailable = 0;
+    long value = 0, memTotal = 0, memFree = 0;
     std::ifstream filestream(kProcDirectory + kMeminfoFilename);
 
     if (filestream.is_open()) {
@@ -90,11 +91,6 @@ float LinuxParser::MemoryUtilization() {
                 }
                 if (key == "MemFree:") {
                     memFree = value;
-                    countToRead++;
-                    continue;
-                }
-                if (key == "MemAvailable:") {
-                    memAvailable = value;
                     countToRead++;
                     continue;
                 }
@@ -220,11 +216,7 @@ long LinuxParser::IdleJiffies() {
         long guest;
         long guest_nice;
         linestream >> cpu >> user >> nice >> system >> idle >> iowait >> irq >> softirq >> steal >> guest >> guest_nice;
-        long userTime = user - guest;
-        long niceTime = nice - guest_nice;
         long idleAllTime = idle + iowait;
-        long systemAllTime = system + irq + softirq;
-        long virtualTime = guest + guest_nice;
         return idleAllTime;
     }
 
@@ -295,7 +287,7 @@ int LinuxParser::RunningProcesses() {
 
 // DONE: Read and return the command associated with a process
 // REMOVE: [[maybe_unused]] once you define the function
-string LinuxParser::Command(int pid[[maybe_unused]]) {
+string LinuxParser::Command(int pid) {
     string line;
     std::stringstream filename;
     filename << kProcDirectory << "/" << pid << "/" << kCmdlineFilename;
@@ -310,7 +302,7 @@ string LinuxParser::Command(int pid[[maybe_unused]]) {
 
 // DONE: Read and return the memory used by a process
 // REMOVE: [[maybe_unused]] once you define the function
-string LinuxParser::Ram(int pid[[maybe_unused]]) {
+string LinuxParser::Ram(int pid) {
 
     string line, key, value;
     std::stringstream filename;
@@ -333,7 +325,7 @@ string LinuxParser::Ram(int pid[[maybe_unused]]) {
 
 // DONE: Read and return the user ID associated with a process
 // REMOVE: [[maybe_unused]] once you define the function
-string LinuxParser::Uid(int pid[[maybe_unused]]) {
+string LinuxParser::Uid(int pid) {
 
     string line, key, value;
     std::stringstream filename;
@@ -356,7 +348,7 @@ string LinuxParser::Uid(int pid[[maybe_unused]]) {
 
 // DONE: Read and return the user associated with a process
 // REMOVE: [[maybe_unused]] once you define the function
-string LinuxParser::User(int pid[[maybe_unused]]) {
+string LinuxParser::User(int pid) {
 
     string line;
     string user, x, suid;
