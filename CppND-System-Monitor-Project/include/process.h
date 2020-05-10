@@ -19,7 +19,7 @@ public:
     long int UpTime();                       // DONE: See src/process.cpp
     bool operator<(Process &a);  // DONE: See src/process.cpp
 
-    // TODO: Declare any necessary private members
+    // DONE: Declare any necessary private members
 private:
     int pid_ = 0;
     float cpuUtilization = 0.0;
