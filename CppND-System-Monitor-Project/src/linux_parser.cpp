@@ -270,6 +270,8 @@ string LinuxParser::Command(int pid) {
 
     if (stream.is_open()) {
         std::getline(stream, line);
+    } else {
+        return "N/A";
     }
 
     return line;
@@ -293,6 +295,8 @@ string LinuxParser::Ram(int pid) {
                 }
             }
         }
+    } else {
+        return "N/A";
     }
 
     return string();
