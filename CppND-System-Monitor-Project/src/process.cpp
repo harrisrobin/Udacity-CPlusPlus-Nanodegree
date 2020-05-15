@@ -37,15 +37,15 @@ string Process::User() {
 
 // DONE: Return the age of this process (in seconds)
 long int Process::UpTime() {
-    return LinuxParser::UpTime(pid_);
+    return LinuxParser::UpTime() - LinuxParser::UpTime(pid_);
 }
 
 // DONE: Overload the "less than" comparison operator for Process objects
 // REMOVE: [[maybe_unused]] once you define the function
-bool Process::operator<(Process &a)  {
-    float& CPUutilization = CpuUtilization();
-    float& aUtilization = a.CpuUtilization();
-    return CPUutilization < aUtilization;
+bool Process::operator<(Process &a) {
+    float &CPUutilization = CpuUtilization();
+    float &aUtilization = a.CpuUtilization();
+    return CPUutilization > aUtilization;
 }
 
 

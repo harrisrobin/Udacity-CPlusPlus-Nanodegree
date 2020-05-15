@@ -102,7 +102,6 @@ float LinuxParser::MemoryUtilization() {
 
     return (memTotalGB - memFreeGB) / memTotalGB;
 }
-
 // DONE: Read and return the system uptime
 long LinuxParser::UpTime() {
 
@@ -118,6 +117,7 @@ long LinuxParser::UpTime() {
 
     return uptime;
 }
+
 
 // DONE: Read and return the number of jiffies for the system
 long LinuxParser::Jiffies() {
