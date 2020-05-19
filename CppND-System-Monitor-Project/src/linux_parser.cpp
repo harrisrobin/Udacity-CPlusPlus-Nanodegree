@@ -102,6 +102,7 @@ float LinuxParser::MemoryUtilization() {
 
     return (memTotalGB - memFreeGB) / memTotalGB;
 }
+
 // DONE: Read and return the system uptime
 long LinuxParser::UpTime() {
 
@@ -125,20 +126,23 @@ long LinuxParser::Jiffies() {
     string key;
     long jiffies = 0;
     std::ifstream filestream(kProcDirectory + kStatFilename);
-    if (filestream.is_open()) {
-        std::getline(filestream, line);
-        std::stringstream linestream(line);
-        int value;
 
-        for (int i = 0; i < 9; ++i) {
-            if (i == 0) {
-                linestream >> key;
-            } else {
-                linestream >> value;
-                jiffies += value;
+    if (filestream.is_open()) {
+        while (std::getline(filestream, line)) {
+            std::stringstream linestream(line);
+            int value;
+
+            for (int i = 0; i < 9; ++i) {
+                if (i == 0) {
+                    linestream >> key;
+                } else {
+                    linestream >> value;
+                    jiffies += value;
+                }
             }
         }
     }
+
     return jiffies;
 }
 
@@ -366,7 +370,7 @@ long LinuxParser::UpTime(int pid) {
         std::getline(filestream, line);
         std::istringstream linestream(line);
 
-        for (int i = 0; i <= 22; ++i) {
+        for (int i = 0; i <= 21; ++i) {
             if (i == CPUStates::kStarttime) {
                 linestream >> uptime;
             } else {
