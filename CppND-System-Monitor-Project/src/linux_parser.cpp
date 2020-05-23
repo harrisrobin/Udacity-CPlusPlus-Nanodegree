@@ -371,11 +371,8 @@ long LinuxParser::UpTime(int pid) {
         std::istringstream linestream(line);
 
         for (int i = 0; i <= 21; ++i) {
-            if (i == CPUStates::kStarttime) {
-                linestream >> uptime;
-            } else {
-                linestream >> placeholder;
-            }
+            linestream >> uptime;
+
         }
     }
     return uptime / sysconf(_SC_CLK_TCK);
